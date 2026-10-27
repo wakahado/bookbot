@@ -1,4 +1,4 @@
-def get_book_text(book):
+def get_book_text(book: str):
     with open(book) as f:
         file_contents = f.read()
     return file_contents
@@ -19,16 +19,14 @@ def count_characters(str):
             dict[str[i]] += 1
     return dict
 
-def sorted_list(dict):
+def sort_on(items: tuple[str, int]) -> int:
+    return items[1]
+
+def chars_dict_to_sorted_list(dict: dict[str, int]) -> list[tuple[str, int]]:
     sorted_lst = []
     for key, value in dict.items():
-        sorted_lst.append({"char": key, "num": value})
+        sorted_lst.append((key, value))
+    sorted_lst.sort(reverse = True, key = sort_on)
     return sorted_lst
-
-def sort_on(items):
-    return items["num"]
-
-def sorted_character(sorted_lst):
-    return sorted_lst.sort(reverse = True, key = sort_on)
 
         

@@ -1,2 +1,4 @@
 # ignore files in books folder
 books/
+__pycache__/
+.DS_Store

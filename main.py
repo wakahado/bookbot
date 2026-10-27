@@ -8,20 +8,21 @@ if len(sys.argv) < 2:
 
 book = sys.argv[1]
 lst = get_book_text(book).split()
+word_counts = count_words(lst)
+
 str = get_book_text(book)
 dict = count_characters(str)
-sorted_lst = sorted_list(dict)
+sorted_lst = chars_dict_to_sorted_list(dict)
 
-
-def main():
+def print_report(book, word_counts, sorted_lst):
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {book}")
     print("----------- Word Count ----------")
-    print(f"Found {count_words(lst)} total words")
+    print(f"Found {word_counts} total words")
     print("--------- Character Count -------")
-    sorted_character(sorted_lst)
     for i in range(len(sorted_lst) - 1):
-        print(f"{sorted_lst[i]['char']}: {sorted_lst[i]['num']}\n")
+        if sorted_lst[i][0].isalpha():
+            print(f"{sorted_lst[i][0]}: {sorted_lst[i][1]}\n")
     print("============= END ===============")
 
-main()
+print_report(book, word_counts, sorted_lst)
